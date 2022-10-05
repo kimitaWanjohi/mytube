@@ -1,8 +1,22 @@
-import React from 'react'
+import React from 'react';
+import Stack from '@mui/material/Stack';
+import { Link } from 'react-router-dom';
+
+import SearchBar from './SearchBar'
 
 function Navbar() {
   return (
-    <div>Navbar</div>
+    <Stack 
+      direction="row"
+      alignItems="center" 
+      p={2}
+      sx={{ position: 'sticky', background: '#000', top: 0, justifyContent: 'space-between'}}
+    >
+      <Link to="/" style={{ display: 'flex', alignItems: 'center'}}>
+        <img src="https://www.youtube.com/s/desktop/6588612c/img/favicon_48x48.png" alt="logo" height={40} />
+      </Link>
+      <SearchBar />
+    </Stack>
   )
 }
 
