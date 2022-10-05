@@ -6,7 +6,7 @@ import {categories} from '../utils/constants';
 const selectedCategory =  "New";
 
 
-function Sidebar() {
+function Sidebar({selectedCategory, setSelectedCategory}) {
   return (
     <Stack
         direction="row"
@@ -23,6 +23,7 @@ function Sidebar() {
                     background: category.name ===  selectedCategory && "#FC1503",
                     color: 'white',
                 }}
+                onClick={() => setSelectedCategory(category.name)}
                 key={category.name}
             >
                 <span 
