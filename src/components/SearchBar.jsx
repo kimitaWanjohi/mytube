@@ -28,7 +28,7 @@ function SearchBar() {
             type="submit"
             sx={{
                 p: "10px",
-                color: "red"
+                color: "red" 
             }}
         >
             <Search />
