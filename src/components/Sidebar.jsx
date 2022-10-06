@@ -3,8 +3,6 @@ import Stack from '@mui/material/Stack';
 
 import {categories} from '../utils/constants';
 
-const selectedCategory =  "New";
-
 
 function Sidebar({selectedCategory, setSelectedCategory}) {
   return (

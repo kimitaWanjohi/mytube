@@ -7,7 +7,6 @@ import CardMedia from '@mui/material/CardMedia';
 import {CheckCircle} from '@mui/icons-material';
 
 import { 
-    demoThumbnailUrl,
     demoVideoUrl, 
     demoChannelUrl,
     demoVideoTitle,
