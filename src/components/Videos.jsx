@@ -5,10 +5,10 @@ import VideoCard from './VideoCard';
 import ChannelCard from './ChannelCard';
 
 
-function Videos({videos}) {
+function Videos({videos, direction}) {
   return (
     <Stack
-      direction="row"
+      direction={ direction || "row"}
       flexWrap="wrap"
       justifyContent="start"
       gap={2}
