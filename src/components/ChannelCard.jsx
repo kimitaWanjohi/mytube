@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 
 import { demoProfilePicture } from '../utils/constants';
 
-export default function ChannelCard({ channelDetail }) {
+export default function ChannelCard({ channelDetail, mt }) {
   return (
     <Box
       sx={{
@@ -19,10 +19,11 @@ export default function ChannelCard({ channelDetail }) {
         alignItems: 'center',
         width: {xs: '356px', md: '320px'},
         height: '326px',
-        margin: 'auto'
+        margin: 'auto',
+        marginTop: mt
       }}
     >
-      <Link to={`${channelDetail?.id.channelId}`}>
+      <Link to={`/channel/${channelDetail?.id.channelId}`}>
         <CardContent
           sx={{
             display: 'flex',
@@ -55,7 +56,7 @@ export default function ChannelCard({ channelDetail }) {
           {channelDetail?.statistics?.subscriberCount && (
             <Typography>
               {parseInt(channelDetail?.statistics?.subscriberCount).toLocaleString()}
-              Subscribers
+              {' '}Subscribers
             </Typography>
           )}
         </CardContent>
