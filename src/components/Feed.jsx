@@ -10,11 +10,11 @@ import {fetchFromAPI} from '../utils/fetchFromApi';
 
 function Feed() {
   const [selectedCategory, setSelectedCategory] = useState("New");
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState();
 
   useEffect(() => {
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-      .then((data) => console.log(data) )
+      .then((data) => setVideos(data.items))
   }, [selectedCategory])
 
   return (
@@ -62,7 +62,7 @@ function Feed() {
           <Typography
             variant="h4"
             component="div"
-            fontWeigth="bold"
+            fontWeight="bold"
             gutterBottom
             sx={{
               color: "white",
