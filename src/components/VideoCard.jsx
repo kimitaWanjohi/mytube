@@ -23,12 +23,13 @@ function VideoCard({ video: {id: {videoId}, snippet}}) {
             boxShadow: 'none', borderRadius: 0
         }}
     >
-        <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-            <CardMedia 
-                image={snippet?.thumbnails?.high?.url}
-                alt={snippet?.title}
-                sx={{width: 358, height: 180}}
-            />
+            <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
+                <CardMedia 
+                    image={snippet?.thumbnails?.high?.url}
+                    alt={snippet?.title}
+                    sx={{width: 358, height: 180}}
+                />
+            </Link>
             <CardContent sx={{
                 backgroundColor: '#1e1e1e',
                 height: "106px"
@@ -57,7 +58,7 @@ function VideoCard({ video: {id: {videoId}, snippet}}) {
                     </Typography>
                 </Link>
             </CardContent>
-        </Link>
+
     </Card>
   )
 }
