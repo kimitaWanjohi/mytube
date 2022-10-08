@@ -22,6 +22,8 @@ function SearchBar() {
         component="form"
         onSubmit={handleSubmit}
         sx={{
+            display: 'flex',
+            alignItems: 'center',
             borderRadius: 20,
             border: '1px solid #e3e3e3',
             pl: 2,

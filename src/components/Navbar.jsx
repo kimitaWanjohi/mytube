@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar'
 
 function Navbar() {
+  const[showSearch, setShowSearch] = useState();
+  
   return (
     <Stack 
       direction="row"
@@ -18,7 +20,8 @@ function Navbar() {
         {" "}
         <Typography variant="h4" color="#fff"
           sx={{
-            marginLeft: "2px"
+            marginLeft: "2px",
+            display: {xs: 'none', md: 'block'}
           }}
         >
           My
