@@ -5,7 +5,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
 
-const Search = styled('div')(({ theme }) => ({
+const Search = styled('form')(({ theme }) => ({
     position: 'relative',
     height: '40px',
     borderRadius: theme.shape.borderRadius,
@@ -65,22 +65,20 @@ function SearchBar() {
           navigate(`/search/${searchTerm}`);
           setSearchTerm('');
       }
-  }
+  }     
     
   return (
-    <form onSubmit={handleSubmit}> 
-        <Search>
-            <SearchIconWrapper>
-                <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-            placeholder="Search…"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            inputProps={{ 'aria-label': 'search' }}
-            />
-        </Search>
-    </form>
+    <Search onSubmit={handleSubmit}>
+        <SearchIconWrapper>
+            <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase
+        placeholder="Search…"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        inputProps={{ 'aria-label': 'search' }}
+        />
+    </Search>
   )
 }
 
