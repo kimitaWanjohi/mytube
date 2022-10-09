@@ -1,19 +1,25 @@
-import React, {useState, useEffect } from 'react'
+import React, {useState, useEffect, useContext } from 'react'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import {useParams} from 'react-router-dom';
-import Videos from './Videos';
 
+import Videos from './Videos';
+import {LoadingContext} from '../App';
 import {fetchFromAPI} from '../utils/fetchFromApi';
 
 export default function SearchFeed() {
   const [videos, setVideos] = useState();
   const {searchTerm} = useParams();
+  const {setLoading} = useContext(LoadingContext);
 
   useEffect(() => {
+    setLoading(true);
     fetchFromAPI(`search?part=snippet&q=${searchTerm}`)
-      .then((data) => setVideos(data.items))
-  }, [searchTerm])
+      .then((data) => {
+        setVideos(data.items);
+        setLoading(false);
+      })
+  }, [searchTerm, setLoading])
 
   return (
     <Box

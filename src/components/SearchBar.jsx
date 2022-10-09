@@ -35,7 +35,7 @@ const Search = styled('form')(({ theme }) => ({
     color: 'inherit',
     height: '40px',
     '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 0, 0),
+      padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
@@ -71,7 +71,7 @@ function SearchBar() {
   return (
     <Search onSubmit={handleSubmit}>
         <SearchIconWrapper>
-            <SearchIcon />
+            <SearchIcon color="error" />
         </SearchIconWrapper>
         <StyledInputBase
         placeholder="Search…"

@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 
 import Videos from './Videos';
 import ChannelCard from './ChannelCard';
+import {LoadingContext} from '../App';
 import {fetchFromAPI} from '../utils/fetchFromApi';
 
 
@@ -12,14 +13,22 @@ function ChannelDetail() {
   const { id } = useParams();
   const [channelDetail, setChannelDetail] = useState();
   const [videos, setVideos] = useState([]);
+  const {setLoading} = useContext(LoadingContext);
 
   useEffect(() => {
+    setLoading(true);
     fetchFromAPI(`channels?part=snippet&id=${id}`)
-      .then((data) => setChannelDetail(data?.items[0]));
+      .then((data) => {
+        setChannelDetail(data?.items[0]);
+        setLoading(false);
+      });
     
     fetchFromAPI(`search?channelId=${id}&part=snippet&order=date`)
-      .then((data) => setVideos(data?.items));
-  }, [id])
+      .then((data) => {
+        setVideos(data?.items);
+        setLoading(false)
+      });
+  }, [id, setLoading])
 
   return (
     <Box

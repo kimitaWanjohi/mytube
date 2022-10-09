@@ -1,11 +1,12 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 
-import Videos from './Videos'
+import Videos from './Videos';
+import { LoadingContext } from '../App';
 import {fetchFromAPI} from '../utils/fetchFromApi';
 
 
@@ -13,14 +14,22 @@ function VideoDetail() {
   const {id} = useParams();
   const [videoDetail, setVideoDetail] = useState();
   const [videos, setVideos] = useState([]);
+  const {setLoading} = useContext(LoadingContext);
 
   useEffect(() => {
+    setLoading(true);
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
-      .then(data => setVideoDetail(data.items[0]));
+      .then(data => {
+        setVideoDetail(data.items[0]);
+        setLoading(false);
+      });
 
     fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
-      .then(data => setVideos(data.items));
-  }, [id]);
+      .then(data => {
+        setVideos(data.items);
+        setLoading(false);
+      });
+  }, [id, setLoading]);
 
   if(!videoDetail?.snippet) return 'loading...';
 

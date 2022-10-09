@@ -1,21 +1,27 @@
-import React, {useState, useEffect } from 'react'
+import React, {useState, useEffect, useContext } from 'react'
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 import Sidebar from './Sidebar';
 import Videos from './Videos';
+import {LoadingContext} from '../App';
 
 import {fetchFromAPI} from '../utils/fetchFromApi';
 
 function Feed() {
   const [selectedCategory, setSelectedCategory] = useState("New");
   const [videos, setVideos] = useState();
+  const {setLoading} = useContext(LoadingContext);
 
   useEffect(() => {
+    setLoading(true);
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-      .then((data) => setVideos(data.items))
-  }, [selectedCategory])
+      .then((data) => {
+        setVideos(data.items);
+        setLoading(false);
+      })
+  }, [selectedCategory, setLoading])
 
   return (
     <Stack
