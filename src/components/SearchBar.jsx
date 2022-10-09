@@ -14,7 +14,7 @@ const Search = styled('form')(({ theme }) => ({
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
-    width: '100%',
+    width: 'auto',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
@@ -35,7 +35,7 @@ const Search = styled('form')(({ theme }) => ({
     color: 'inherit',
     height: '40px',
     '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
+      padding: theme.spacing(1, 1, 0, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
@@ -46,10 +46,11 @@ const Search = styled('form')(({ theme }) => ({
           width: '20ch',
         },
       },
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down('md')]: {
         width: '12ch',
         '&:focus': {
-          width: '20ch',
+          width: '80%',
+          marginLeft: theme.spacing(1)
         },
       },
     },
