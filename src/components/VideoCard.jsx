@@ -18,8 +18,8 @@ function VideoCard({ video: {id: {videoId}, snippet}}) {
   return (
     <Card
         sx={{
-            width: {xs: "100%", sm: "358px", md: "320px"},
-            boxShadow: 'none', borderRadius: 0
+            width: {xs: "320px", sm: "358px", md: "320px"},
+            boxShadow: 'none', borderRadius: 0, margin: 'auto'
         }}
     >
             <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
@@ -54,7 +54,6 @@ function VideoCard({ video: {id: {videoId}, snippet}}) {
                         <CheckCircle sx={{
                             fontSize: 12,
                             color: 'gray',
-                            ml: 5
                         }}/>
                     </Typography>
                 </Link>
