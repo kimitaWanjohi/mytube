@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar'
 
 function Navbar() {
-  const[showSearch, setShowSearch] = useState();
-  
   return (
     <Stack 
       direction="row"
